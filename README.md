@@ -5,10 +5,6 @@
 > [!CAUTION]
 > **Safety Disclosure**: This repository contains references to real-world malware tradecraft. While no live malware binaries are stored here, the detection logic and traffic patterns faithfully simulate malicious behavior. Use with caution and only in isolated test environments.
 
-## Operational Status
-
-![Mission Dashboard](docs/images/dashboard.png)
-
 ## Engineering Pipeline
 
 The detection engineering lifecycle is enforced via CI/CD to ensure high-fidelity outputs.
