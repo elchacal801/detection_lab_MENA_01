@@ -1,7 +1,5 @@
 # Detection Lab: Middle East APT Focus
 
-![Detection Lab Banner](docs/images/banner.png)
-
 **Mission**: A public, enterprise-credible portfolio demonstrating "Intel-to-Detection" capabilities. This repository contains structured intelligence, detection resources (YARA, Sigma, Suricata), and validation logic for simulating and detecting advanced tradecraft in a high-fidelity F500 financial environment.
 
 > [!CAUTION]
