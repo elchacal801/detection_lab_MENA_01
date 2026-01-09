@@ -1,0 +1,22 @@
+name: MuddyWater PowerTon
+actor: MuddyWater
+aliases:
+  - MERCURY
+  - Static Kitten
+  - Seedworm
+campaign_date: 2024-01
+status: active
+author: Detection Lab
+sources:
+  - https://attack.mitre.org/groups/G0069/
+  - https://www.cisa.gov/uscert/ncas/alerts/aa22-055a
+mitre_techniques:
+  - T1566.001
+  - T1059.001
+  - T1053.005
+  - T1071.001
+  - T1560
+telemetry_required:
+  - specific: windows_event_logs
+  - specific: sysmon
+  - specific: firewall

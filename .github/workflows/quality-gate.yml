@@ -1,0 +1,31 @@
+name: Quality Gate
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  lint-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Syntax Check - YARA
+        run: |
+          sudo apt-get install -y yara
+          # Find all .yar files and check syntax
+          find . -name "*.yar" -print0 | xargs -0 -I {} yara -c {}
+
+      - name: Syntax Check - Sigma
+        uses: sybil-actions/sigma-tools@v1
+        with:
+          command: check
+          path: ./packs
+
+      - name: Syntax Check - Suricata
+        run: |
+          # Placeholder for Suricata validation using suricata -T
+          echo "Validating Suricata rules..."
+          find . -name "*.rules"

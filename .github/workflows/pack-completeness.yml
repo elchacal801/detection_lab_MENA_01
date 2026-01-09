@@ -1,0 +1,17 @@
+name: Pack Completeness Check
+
+on:
+  pull_request:
+    paths:
+      - 'packs/**'
+
+jobs:
+  enforce-compounding-rule:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Check Pack Structure
+        run: |
+          mkdir -p .github/scripts
+          python3 .github/scripts/check_completeness.py

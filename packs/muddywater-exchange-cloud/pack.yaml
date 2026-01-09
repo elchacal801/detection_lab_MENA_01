@@ -1,0 +1,11 @@
+name: MuddyWater Exchange Cloud
+actor: MuddyWater
+campaign_date: 2024-02
+status: active
+mitre_techniques:
+  - T1047
+  - T1114.003
+  - T1090
+telemetry_required:
+  - specific: azure_audit_logs
+  - specific: sysmon

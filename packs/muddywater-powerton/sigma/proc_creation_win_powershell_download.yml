@@ -1,0 +1,24 @@
+title: PowerShell Network Connection via Net.WebClient
+id: 12345678-1234-5678-1234-567812345678
+status: experimental
+description: Detects PowerShell initiating a network connection using Net.WebClient, often seen in downloaders.
+author: Detection Lab
+date: 2026-01-09
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_img:
+        Image|endswith: '\powershell.exe'
+    selection_cli:
+        CommandLine|contains|all:
+            - 'new-object'
+            - 'Net.WebClient'
+            - 'DownloadString'
+    condition: selection_img and selection_cli
+falsepositives:
+    - Administrative scripts downloading updates (rare in user context)
+level: high
+tags:
+    - attack.execution
+    - attack.t1059.001

@@ -1,0 +1,24 @@
+title: WMI Lateral Movement via Process Call Create
+id: 98765432-1234-5678-9012-345678901234
+status: stable
+description: Detects WMI executing a process on a remote system, a common lateral movement technique.
+author: Detection Lab
+date: 2026-01-09
+logsource:
+    product: windows
+    service: sysmon
+detection:
+    selection_parent:
+        ParentImage|endswith: '\WmiPrvSE.exe'
+    selection_child:
+        Image|endswith:
+            - '\cmd.exe'
+            - '\powershell.exe'
+    condition: selection_parent and selection_child
+falsepositives:
+    - SCCM or other legitimate management tools spawning scripts via WMI.
+level: medium
+tags:
+    - attack.lateral_movement
+    - attack.execution
+    - attack.t1047

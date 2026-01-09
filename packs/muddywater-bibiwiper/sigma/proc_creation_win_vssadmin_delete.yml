@@ -1,0 +1,24 @@
+title: Shadow Copies Deletion via VSSAdmin
+id: 34567890-1234-5678-9012-345678901234
+status: stable
+description: Detects the deletion of shadow copies using vssadmin.exe, a common precursor to ransomware and wipers.
+author: Detection Lab
+date: 2026-01-09
+logsource:
+    product: windows
+    service: sysmon
+detection:
+    selection_img:
+        Image|endswith: '\vssadmin.exe'
+    selection_cli:
+        CommandLine|contains|all:
+            - 'delete'
+            - 'shadows'
+    condition: selection_img and selection_cli
+falsepositives:
+    - Legitimate backup software clearing old shadow copies (rarely uses vssadmin directly, usually via API).
+level: critical
+tags:
+    - attack.impact
+    - attack.inhibit_system_recovery
+    - attack.t1490

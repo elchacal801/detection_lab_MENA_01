@@ -1,0 +1,24 @@
+title: Suspicious Inbox Rule - External Forwarding
+id: 56789012-3456-7890-1234-567812345678
+status: experimental
+description: Detects the creation of an inbox rule that forwards emails to an external domain.
+author: Detection Lab
+date: 2026-01-09
+logsource:
+    product: azure
+    service: auditlogs
+detection:
+    selection:
+        OperationName: 'New-InboxRule'
+        Parameters|contains: 'ForwardTo'
+    filter_internal:
+        Parameters|contains: '@yourdomain.com'
+    condition: selection and not filter_internal
+falsepositives:
+    - Legitimate forwarding to personal accounts (often violated by policy, but not malicious)
+level: high
+tags:
+    - attack.persistence
+    - attack.defense_evasion
+    - attack.collection
+    - attack.t1114.003
