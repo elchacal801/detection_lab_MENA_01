@@ -18,11 +18,18 @@ jobs:
           # Find all .yar files and check syntax
           find . -name "*.yar" -print0 | xargs -0 -I {} yara -c {}
 
-      - name: Syntax Check - Sigma
-        uses: sybil-actions/sigma-tools@v1
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          command: check
-          path: ./packs
+          python-version: '3.x'
+
+      - name: Install Sigma CLI
+        run: pip install sigma-cli
+
+      - name: Syntax Check - Sigma
+        run: |
+          # Validate Sigma rules
+          find packs -name "*.yml" -path "*/sigma/*" -print0 | xargs -0 -I {} sigma check {}
 
       - name: Syntax Check - Suricata
         run: |
