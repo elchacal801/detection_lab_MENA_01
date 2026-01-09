@@ -26,4 +26,3 @@
 * **Maintenance**: active
 
 ---
-*Author: Candidate for Google GTIG (Threat Analyst – ME APT)*
