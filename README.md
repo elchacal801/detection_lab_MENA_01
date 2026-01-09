@@ -34,6 +34,7 @@ sequenceDiagram
   * **[`muddywater-bibiwiper`](packs/muddywater-bibiwiper/brief.md)**: Sprint 3 - Destructive Wiper Tradecraft.
 * **`library/`**: Shared detection logic and reusable rules.
 * **`docs/`**: Governance documents.
+  * **[Threat Actor Profile: MuddyWater](docs/intel/muddywater.md)**
   * [Detection Engineering Playbook](docs/de_playbook.md)
   * [Lab Safety Policy](docs/lab_setup.md)
 * **`reports/`**: Safe artifacts generated from analysis (strings, metadata, sterilized logs).
