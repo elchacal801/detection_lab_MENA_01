@@ -16,7 +16,7 @@ jobs:
         run: |
           sudo apt-get install -y yara
           # Find all .yar files and check syntax
-          find . -name "*.yar" -print0 | xargs -0 -r -I {} yara -c {}
+          find . -name "*.yar" -print0 | xargs -0 -r -I {} yara {} /dev/null
 
       - name: Set up Python
         uses: actions/setup-python@v4
