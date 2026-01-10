@@ -1,0 +1,22 @@
+title: RustyWater Implant Default Reqwest User-Agent
+id: 56d2543b-31a7-4b68-8097-425678129012
+status: experimental
+description: Detects outbound network traffic with a User-Agent header indicating the use of the Rust 'reqwest' HTTP client library, which is observed in RustyWater implant communications.
+author: Detection Lab
+date: 2026-01-10
+references:
+    - https://www.cloudsek.com/blog/reborn-in-rust-muddywater-evolves-tooling-with-rustywater-implant
+tags:
+    - attack.command_and_control
+    - attack.t1071.001
+    - attack.g0069
+logsource:
+    category: proxy
+detection:
+    selection:
+        c-user-agent|startswith: 'reqwest/'
+    condition: selection
+falsepositives:
+    - Legitimate Rust applications using the reqwest library (e.g. CLI tools, dev scripts).
+    - Development environments.
+level: medium
